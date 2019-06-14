@@ -42,7 +42,7 @@ class ResPartner(models.Model):
         # When the affiliate is a company, we must set back its address
         # because the super call changes its address by the new parent address.
         # In addition, the type must be set to affiliate instead of contact.
-        if self.is_company:
+        if new_partner and self.is_company:
             new_partner.update(original_address)
             new_partner['value'].update({'type': 'affiliate'})
 
